@@ -10,6 +10,7 @@ export class BodyComponent implements OnInit {
   public inputType: string | null = null;
   public outputType: string | null = null;
   public translatedText: string = '';
+  public error: string | null = null;
 
   ListDataTypes= ["String", "Base64", "Hex", "Byte"];
   constructor(private translationService: TranslationService) {}
@@ -20,6 +21,10 @@ export class BodyComponent implements OnInit {
     const temp = this.inputType;
     this.inputType = this.outputType;
     this.outputType = temp;
+
+    const text = this.input;
+    this.input = this.translatedText
+    this.translatedText = text;
   }
 
   translate(): void {
@@ -27,8 +32,7 @@ export class BodyComponent implements OnInit {
       this.translationService.translateText(this.input, this.inputType, this.outputType)
       .subscribe(
         (response: any) => {
-          // console.log('API Response:', response);  // Kiểm tra phản hồi từ API
-          this.translatedText = response;  // Cập nhật thuộc tính này
+          this.translatedText = response;
           console.log(this.translatedText)
         },
         (error: any) => {
