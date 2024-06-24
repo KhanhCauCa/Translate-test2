@@ -1,0 +1,47 @@
+<main class="container my-4">
+  <div class="translator p-4 bg-white rounded shadow-sm">
+    <div class="row mb-3">
+      <div class="col-md-5">
+        <select class="form-control" id="source-language" [(ngModel)]="inputType">
+          <option *ngFor = "let datatype of ListDataTypes" [value]="datatype" >{{datatype}}</option>
+        </select>
+      </div>
+      <div class="col-md-2 text-center">
+        <button id="swap-languages" class="btn btn-outline-secondary" (click)="swapLanguages()">⇄</button>
+      </div>
+      <div class="col-md-5">
+        <select class="form-control" id="target-language"  [(ngModel)]="outputType">
+          <option *ngFor = "let datatype of ListDataTypes" [value]="datatype">{{datatype}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <textarea
+            [(ngModel)]="input"
+            class="form-control"
+            id="source-text"
+            rows="5"
+            placeholder="Nhập văn bản"
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <textarea
+            class="form-control"
+            id="translated-text"
+            rows="5"
+            placeholder="Văn bản được dịch"
+            [value]="translatedText"
+            readonly
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mb-3 mt-2">
+      <button id="translate-button" class="btn btn-primary" (click)="translate()">Dịch</button>
+    </div>
+  </div>
+</main>
