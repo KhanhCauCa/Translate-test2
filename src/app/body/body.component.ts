@@ -16,15 +16,14 @@ export class BodyComponent implements OnInit {
   constructor(private translationService: TranslationService) {}
 
   ngOnInit(): void {}
-
   swapLanguages(): void {
-    const temp = this.inputType;
+    let temp = this.inputType;
     this.inputType = this.outputType;
     this.outputType = temp;
 
-    const text = this.input;
+    temp = this.input;
     this.input = this.translatedText
-    this.translatedText = text;
+    this.translatedText = temp;
   }
 
   translate(): void {
@@ -33,10 +32,11 @@ export class BodyComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.translatedText = response;
-          console.log(this.translatedText)
+          // console.log(this.translatedText)
         },
         (error: any) => {
           console.error(error);
+          alert('Dữ liệu không  phải dạng '+  this.outputType)
         }
         );
     }

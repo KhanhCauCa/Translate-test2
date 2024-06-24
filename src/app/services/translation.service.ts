@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TranslationService {
-  private apiUrl = "http://localhost:8080/convert'; // Cập nhật cổng nếu cần
+  private apiUrl = 'http://localhost:8080/convert';
 
   constructor(private http: HttpClient) { }
 
